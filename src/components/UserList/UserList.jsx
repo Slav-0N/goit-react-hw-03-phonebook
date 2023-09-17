@@ -9,6 +9,17 @@ class UserList extends Component {
     contacts: [],
     filter: '',
   };
+  componentDidMount() {
+    const storedData = localStorage.getItem('contacts');
+    if (storedData) {
+      this.setState({ contacts: JSON.parse(storedData) });
+    }
+  }
+  componentDidUpdate(_, prevState) {
+    if (prevState.contacts.length !== this.state.contacts.length) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
 
   createUser = body => {
     const isExistContact = this.state.contacts.find(

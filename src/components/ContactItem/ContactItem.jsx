@@ -8,6 +8,7 @@ const ContactItems = ({ contacts, handleDelete }) => {
           <li key={el.id}>
             {el.name}: {el.number}
             <button onClick={() => handleDelete(el.id)}>Delete</button>
+            <button>TUT</button>
           </li>
         );
       })}
